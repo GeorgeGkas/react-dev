@@ -1,0 +1,16 @@
+#councillors-table {
+  text-align: center;
+}
+
+#councillors-table [class^="sort"] {
+  cursor: pointer;
+  color: #6800ff;
+}
+
+#councillors-table .sort-asc::after {
+  content: '▲';
+}
+
+#councillors-table .sort-desc::after {
+  content: '▼';
+}
