@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Magnitude</title>
+</head>
+<body>
+  <script>
+    function magnitude(vector) {
+      // On an n-dimensional Euclidean space Rn,
+      // the intuitive notion of length of the vector is v=(v1,v2,...,vn) = square(sum(vi^2))
+
+      // For a zero dimensional vector, the default magnitude is zero.
+      if (vector.length === 0) {
+        return 0
+      }
+
+      // Note: Ensure that the result will not overflow.
+      return Math.sqrt(vector.map(vi => vi**2).reduce((sum, vi) => sum + vi, 0))
+    }
+
+  </script>
+</body>
+</html>
