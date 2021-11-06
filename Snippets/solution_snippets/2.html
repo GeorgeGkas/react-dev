@@ -1,0 +1,30 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // A possible solution will be to add a threshold to minimize the 
+            // CPU executions. The simplest approach will be to define a global variable
+            // to track the last triggered time of the event listener.
+
+
+            let last_trigger_time = -1 // Initialize with -1 to catch the first execution
+            const MOUSEMOVE_EVENT_THRESHOLD = 500
+
+            document.addEventListener('mousemove', function () {
+                const currentTime = +new Date // use coercion with plus sign to make it a number
+                
+                if (currentTime - last_trigger_time < MOUSEMOVE_EVENT_THRESHOLD) {
+                    return
+                }
+
+                last_trigger_time = currentTime
+
+                // simulation of non critical taxing task
+                for (let i = 0; i < 9999; i++) {
+                    console.log(i);
+                }
+            });
+        </script>
+    </body>
+</html>
