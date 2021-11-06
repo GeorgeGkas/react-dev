@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Councillors</title>
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="root">
+    <form>
+      <label>Filter:</label>
+      <input type='text' id='filter-input' oninput="filterCouncillors()" />
+      <select type='text' id='filter-select' onchange="filterCouncillors()">
+        <option value="id" selected>Id</option>
+        <option value="firstName">First name</option>
+        <option value="lastName">Last name</option>
+      </select>
+      <small>Data filtering is case sensitive.</small>
+    </form>
+    <table id="councillors-table">
+      <thead>
+        <tr>
+          <th id="councillors-id" class="sort-asc"
+            onclick="sortCouncillorsTableColumnsByField(GLOBAL_STATE.filteredCouncillors, 'id')(event)">Id</th>
+          <th>Number</th>
+          <th>Council</th>
+          <th id="councillors-first-name" class="sort-asc"
+            onclick="sortCouncillorsTableColumnsByField(GLOBAL_STATE.filteredCouncillors, 'firstName')(event)">First Name
+          </th>
+          <th id="councillors-last-name" class="sort-asc"
+            onclick="sortCouncillorsTableColumnsByField(GLOBAL_STATE.filteredCouncillors, 'lastName')(event)">Last Name
+          </th>
+          <th>Canton</th>
+          <th>Canton name</th>
+          <th>Party</th>
+          <th>Party Name</th>
+          <th>Faction</th>
+          <th>FactionName</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <script src="index.js"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', async () => {
+      const councillors = await fetchCouncillorsBasicDataToArray()
+      GLOBAL_STATE.councillors = councillors
+      GLOBAL_STATE.filteredCouncillors = councillors
+      populateCouncillorTable(GLOBAL_STATE.filteredCouncillors)
+    });
+  </script>
+</body>
+
+</html>
